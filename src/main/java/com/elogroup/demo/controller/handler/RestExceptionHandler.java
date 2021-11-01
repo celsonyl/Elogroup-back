@@ -1,6 +1,7 @@
 package com.elogroup.demo.controller.handler;
 
 import com.elogroup.demo.controller.handler.model.StandardError;
+import com.elogroup.demo.controller.handler.model.ValidationError;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 public class RestExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<StandardError> methodValidation(HttpServletRequest httpServletRequest) {
-        var error = new StandardError("A senha deve conter no minimo 8 caracters."
-                + "Um numero." + "Um caracter alfanumerico."
-                + "Um caractere especial", httpServletRequest.getServletPath());
+    public ResponseEntity<StandardError> methodValidation(MethodArgumentNotValidException e, HttpServletRequest httpServletRequest) {
+        var error = new ValidationError("Erro de validação", httpServletRequest.getRequestURI());
+
+        for (var x : e.getBindingResult().getFieldErrors()) {
+            error.addError(x.getField(), x.getDefaultMessage());
+        }
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(error);
     }
 

@@ -3,33 +3,33 @@ package com.elogroup.demo.translator;
 import com.elogroup.demo.controller.model.UserRequest;
 import com.elogroup.demo.controller.model.UserResponse;
 import com.elogroup.demo.domain.UserDomain;
-import com.elogroup.demo.gateway.h2database.model.Userdatabase;
+import com.elogroup.demo.gateway.h2database.model.UserDatabase;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-10-30T16:02:34-0300",
+    date = "2021-11-01T19:48:45-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.13 (Amazon.com Inc.)"
 )
 public class UserMapperImpl implements UserMapper {
 
     @Override
-    public Userdatabase userDomainToDatabase(UserDomain userDomain) {
+    public UserDatabase userDomainToDatabase(UserDomain userDomain) {
         if ( userDomain == null ) {
             return null;
         }
 
-        Userdatabase userdatabase = new Userdatabase();
+        UserDatabase userDatabase = new UserDatabase();
 
-        userdatabase.setId( userDomain.getId() );
-        userdatabase.setUsername( userDomain.getUsername() );
-        userdatabase.setPassword( userDomain.getPassword() );
+        userDatabase.setId( userDomain.getId() );
+        userDatabase.setUsername( userDomain.getUsername() );
+        userDatabase.setPassword( userDomain.getPassword() );
 
-        return userdatabase;
+        return userDatabase;
     }
 
     @Override
-    public UserDomain userDatabaseToDomain(Userdatabase userdatabase) {
+    public UserDomain userDatabaseToDomain(UserDatabase userdatabase) {
         if ( userdatabase == null ) {
             return null;
         }

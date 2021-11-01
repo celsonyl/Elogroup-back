@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity(name = "user")
-public class Userdatabase implements Serializable {
+public class UserDatabase implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +15,10 @@ public class Userdatabase implements Serializable {
     private String username;
     private String password;
 
-    public Userdatabase() {
+    public UserDatabase() {
     }
 
-    public Userdatabase(Integer id, String username, String password) {
+    public UserDatabase(Integer id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -52,7 +52,7 @@ public class Userdatabase implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Userdatabase that = (Userdatabase) o;
+        UserDatabase that = (UserDatabase) o;
         return Objects.equals(id, that.id);
     }
 
